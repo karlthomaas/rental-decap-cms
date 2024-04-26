@@ -1,0 +1,66 @@
+backend:
+  name: git-gateway
+  repo: karlthomaas/rental-decap-cms
+  branch: main
+
+local_backend: true #  # when using the default proxy server port
+media_folder: "src/assets/images" # Location where files will be stored in the repo
+public_folder: "src/assets/images" # The src attribute for uploaded med
+
+# Cloudinary configuration
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: dda929x01
+    api_key: 1023839412409
+    multiple: true
+
+collections:
+  - label: "Home page"
+    name: "homepage"
+    files:
+      - label: "Hero"
+        name: "hero"
+        file: "src/content/homepage/hero.md" # Path to the markdown file
+        create: true
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - {
+              label: "Background Image",
+              name: "backgroundImage",
+              widget: "image",
+              required: false,
+            }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+
+  - label: "Layouts"
+    name: "layouts"
+    files:
+      - label: "Navbar"
+        name: "navbar"
+        file: "src/content/layouts/navbar.md"
+        create: true
+        fields:
+          - { label: "Logo", name: "logo", widget: "image" }
+          - { label: "Logo Alt Text", name: "logoAltText", widget: "string" }
+          - {
+              label: "Links",
+              name: "links",
+              widget: "list",
+              fields:
+                [
+                  { label: "Text", name: "text", widget: "string" },
+                  { label: "Link", name: "link", widget: "string" },
+                ],
+            }
+
+  - label: "Products"
+    name: "products"
+    folder: "src/content/products"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price", name: "price", widget: "number" }
+      - { label: "Image", name: "image", widget: "image" }
