@@ -1,5 +1,6 @@
 import { getMarkup } from "@/libs/utils";
 import { Button } from "@/components/ui/button";
+import Script from "next/script";
 
 export default function Home() {
   const hero = getMarkup("src/content/homepage", "hero.md");
@@ -12,6 +13,7 @@ export default function Home() {
 
   return (
     <main>
+      <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
       <div className="mt-10 flex flex-col items-center">
         <h1 className="text-2xl">{data.title}</h1>
         <p className="text-lg">{data.subtitle}</p>
